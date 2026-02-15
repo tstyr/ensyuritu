@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Wifi, WifiOff, Server, Cpu, Gpu } from 'lucide-react'
+import { Wifi, WifiOff, Server, Cpu, Zap } from 'lucide-react'
 
 interface ConnectionStatusProps {
   isConnected: boolean
@@ -102,7 +102,7 @@ export default function ConnectionStatus({
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="p-2 bg-pink-500/10 rounded-lg mr-3">
-              <Gpu className="w-5 h-5 text-pink-500" />
+              <Zap className="w-5 h-5 text-pink-500" />
             </div>
             <div>
               <p className="font-medium">AMD GPU</p>
@@ -111,7 +111,7 @@ export default function ConnectionStatus({
           </div>
           <div className="text-right">
             <p className="font-bold text-pink-500">Available</p>
-            <p className="text-sm text-gray-400">GPU.js Enabled</p>
+            <p className="text-sm text-gray-400">CPU Optimized</p>
           </div>
         </div>
       </div>

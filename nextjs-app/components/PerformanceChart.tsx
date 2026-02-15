@@ -44,12 +44,6 @@ export default function PerformanceChart({ data }: PerformanceChartProps) {
           <p className="text-primary font-bold">
             Speed: {formatIterations(payload[0].value)}/s
           </p>
-          <p className="text-green-500">
-            π: {payload[1]?.value?.toFixed(10) || '3.1415926535'}
-          </p>
-          <p className="text-blue-500">
-            Workers: {payload[2]?.value || 0}
-          </p>
         </div>
       )
     }
@@ -63,11 +57,7 @@ export default function PerformanceChart({ data }: PerformanceChartProps) {
         <div className="flex items-center space-x-4 text-sm">
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-primary mr-2" />
-            <span className="text-gray-400">Speed (iterations/s)</span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-green-500 mr-2" />
-            <span className="text-gray-400">π Value</span>
+            <span className="text-gray-400">Calculation Speed</span>
           </div>
         </div>
       </div>
@@ -96,42 +86,22 @@ export default function PerformanceChart({ data }: PerformanceChartProps) {
               strokeWidth={2}
               name="Speed"
             />
-            <Area
-              type="monotone"
-              dataKey="piValue"
-              stroke="#10B981"
-              fill="url(#colorPi)"
-              strokeWidth={2}
-              name="π Value"
-              yAxisId={1}
-              hide
-            />
             <defs>
               <linearGradient id="colorSpeed" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8}/>
                 <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
-              </linearGradient>
-              <linearGradient id="colorPi" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10B981" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
               </linearGradient>
             </defs>
           </AreaChart>
         </ResponsiveContainer>
       </div>
       
-      <div className="mt-4 grid grid-cols-3 gap-4 text-sm">
+      <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
         <div className="text-center">
           <div className="text-2xl font-bold text-primary">
             {chartData.length > 0 ? formatIterations(chartData[chartData.length - 1]?.iterationsPerSecond || 0) : '0'}
           </div>
           <div className="text-gray-400">Current Speed</div>
-        </div>
-        <div className="text-center">
-          <div className="text-2xl font-bold text-green-500">
-            {chartData.length > 0 ? chartData[chartData.length - 1]?.piValue?.toFixed(8) || '3.14159265' : '3.14159265'}
-          </div>
-          <div className="text-gray-400">Current π</div>
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-blue-500">
