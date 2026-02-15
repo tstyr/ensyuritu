@@ -146,17 +146,22 @@ async function main() {
     
     // Pusherでデータ送信
     try {
-      pusher.trigger('pi-calculations', 'update', {
+      const payload = {
         pi: piEstimate,
         iterations: totalIterations,
         iterationsPerSecond: iterationsPerSecond,
         activeWorkers: activeWorkers,
         timestamp: Date.now()
-      });
+      };
       
-      console.log('Data sent to Pusher');
+      console.log('Sending to Pusher:', JSON.stringify(payload));
+      
+      pusher.trigger('pi-calculations', 'update', payload);
+      
+      console.log('Data sent to Pusher ✓');
     } catch (err) {
       console.error('Pusher error:', err.message);
+      console.error('Full error:', err);
     }
   }, UPDATE_INTERVAL);
   

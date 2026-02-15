@@ -22,6 +22,7 @@ export default function Home() {
   
   // データ更新ハンドラ
   const handleDataUpdate = useCallback((data: PiCalculationData) => {
+    console.log('Received data from Pusher:', data)
     setPiData(data)
     setLastMessageTime(new Date())
     
@@ -39,9 +40,16 @@ export default function Home() {
   
   // 接続状態監視
   useEffect(() => {
+    console.log('Setting up Pusher connection...')
     const unsubscribeConnection = monitorConnection(
-      () => setIsConnected(true),
-      () => setIsConnected(false)
+      () => {
+        console.log('Pusher connected!')
+        setIsConnected(true)
+      },
+      () => {
+        console.log('Pusher disconnected!')
+        setIsConnected(false)
+      }
     )
     
     return unsubscribeConnection
@@ -49,9 +57,11 @@ export default function Home() {
   
   // Pusher購読
   useEffect(() => {
+    console.log('Subscribing to pi-calculations channel...')
     const unsubscribe = subscribeToPiCalculations(handleDataUpdate)
     
     return () => {
+      console.log('Unsubscribing from pi-calculations channel...')
       unsubscribe()
     }
   }, [handleDataUpdate])
