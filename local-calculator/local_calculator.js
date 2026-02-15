@@ -1,7 +1,6 @@
 const { Worker, isMainThread, parentPort, workerData } = require('worker_threads');
 const os = require('os');
 const Pusher = require('pusher');
-const GPU = require('gpu.js').GPU;
 const si = require('systeminformation');
 
 // Pusher設定（完全設定済み）
@@ -44,43 +43,13 @@ function calculatePiMonteCarlo(iterations) {
   };
 }
 
-// GPU用の円周率計算カーネル
-function createGPUPiKernel() {
-  const gpu = new GPU();
-  
-  return gpu.createKernel(function(iterations) {
-    let inside = 0;
-    
-    for (let i = 0; i < this.constants.iterationsPerThread; i++) {
-      const x = Math.random();
-      const y = Math.random();
-      
-      if (x * x + y * y <= 1.0) {
-        inside++;
-      }
-    }
-    
-    return inside;
-  })
-  .setOutput([CPU_WORKERS])
-  .setConstants({
-    iterationsPerThread: Math.floor(BATCH_SIZE / CPU_WORKERS)
-  });
-}
-
 // ワーカースレッド用コード
 if (!isMainThread) {
-  const { workerId, iterations, useGPU } = workerData;
+  const { workerId, iterations } = workerData;
   
-  if (useGPU) {
-    // GPU計算（この例ではCPUでエミュレート）
-    const result = calculatePiMonteCarlo(iterations);
-    parentPort.postMessage(result);
-  } else {
-    // CPU計算
-    const result = calculatePiMonteCarlo(iterations);
-    parentPort.postMessage(result);
-  }
+  // CPU計算
+  const result = calculatePiMonteCarlo(iterations);
+  parentPort.postMessage(result);
   
   return;
 }
@@ -114,8 +83,7 @@ async function main() {
       const worker = new Worker(__filename, {
         workerData: {
           workerId,
-          iterations: BATCH_SIZE,
-          useGPU: isGPUMode
+          iterations: BATCH_SIZE
         }
       });
       
@@ -210,4 +178,4 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-module.exports = { calculatePiMonteCarlo, createGPUPiKernel };
+module.exports = { calculatePiMonteCarlo };
