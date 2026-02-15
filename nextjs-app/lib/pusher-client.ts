@@ -1,7 +1,7 @@
 import PusherClient from 'pusher-js'
 
-// Pusherクライアント設定
-export const pusherClient = new PusherClient('cfLkDVi1qq3tgvhK8_KSu3WFqjL_6BK1NI-IIL8q8KY', {
+// Pusherクライアント設定（完全設定済み）
+export const pusherClient = new PusherClient('ee031210b68879ca2771', {
   cluster: 'ap3',
   forceTLS: true
 })

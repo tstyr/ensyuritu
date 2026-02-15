@@ -4,12 +4,12 @@ const Pusher = require('pusher');
 const GPU = require('gpu.js').GPU;
 const si = require('systeminformation');
 
-// Pusher設定（完全な設定が必要です）
+// Pusher設定（完全設定済み）
 const pusher = new Pusher({
-  appId: 'YOUR_APP_ID', // Pusherダッシュボードから取得
-  key: 'cfLkDVi1qq3tgvhK8_KSu3WFqjL_6BK1NI-IIL8q8KY',
-  secret: 'YOUR_SECRET', // Pusherダッシュボードから取得
-  cluster: 'ap3', // リージョンに合わせて変更
+  appId: '2115739',
+  key: 'ee031210b68879ca2771',
+  secret: '19cfefddad1f05862158',
+  cluster: 'ap3',
   useTLS: true
 });
 

@@ -223,8 +223,8 @@ export default function Home() {
             Deploy on <a href="https://vercel.com" className="text-primary hover:underline">Vercel</a>
           </p>
           <p className="mt-2">
-            Pusher Key: <code className="bg-gray-800 px-2 py-1 rounded">cfLkDVi1qq3tgvhK8_KSu3WFqjL_6BK1NI-IIL8q8KY</code> • 
-            Complete setup in <code className="bg-gray-800 px-2 py-1 rounded mx-2">local_calculator.js</code>
+            ✅ Pusher configured • App ID: <code className="bg-gray-800 px-2 py-1 rounded">2115739</code> • 
+            Cluster: <code className="bg-gray-800 px-2 py-1 rounded mx-2">ap3</code>
           </p>
         </footer>
       </div>
