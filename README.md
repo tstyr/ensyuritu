@@ -31,9 +31,16 @@ npm install
 ### 3. Pusher設定
 1. [Pusher](https://pusher.com/)でアカウント作成
 2. チャンネルアプリを作成
-3. 以下のファイルでAPIキーを設定：
-   - `local-calculator/local_calculator.js`
-   - `nextjs-app/lib/pusher-client.ts`
+3. 以下のファイルでAPIキーを設定（一部設定済み）：
+   - `local-calculator/local_calculator.js` - キー設定済み（appIdとsecretが必要）
+   - `nextjs-app/lib/pusher-client.ts` - キー設定済み
+
+**設定済みキー**: `cfLkDVi1qq3tgvhK8_KSu3WFqjL_6BK1NI-IIL8q8KY`
+
+**残りの設定**:
+- `appId`: Pusherダッシュボードから取得
+- `secret`: Pusherダッシュボードから取得
+- `cluster`: リージョン（デフォルト: ap3）
 
 ## 使用方法
 

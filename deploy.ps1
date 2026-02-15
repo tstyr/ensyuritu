@@ -25,9 +25,9 @@ Write-Host "=== Deployment Complete ===" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "1. Set up Pusher account: https://pusher.com/" -ForegroundColor White
-Write-Host "2. Update API keys in:" -ForegroundColor White
-Write-Host "   - local-calculator/local_calculator.js" -ForegroundColor Gray
-Write-Host "   - nextjs-app/lib/pusher-client.ts" -ForegroundColor Gray
+Write-Host "2. Update remaining API keys (key already set):" -ForegroundColor White
+Write-Host "   - local-calculator/local_calculator.js (appId and secret needed)" -ForegroundColor Gray
+Write-Host "   - nextjs-app/lib/pusher-client.ts (key already set: cfLkDVi1qq3tgvhK8_KSu3WFqjL_6BK1NI-IIL8q8KY)" -ForegroundColor Gray
 Write-Host "3. Deploy to Vercel:" -ForegroundColor White
 Write-Host "   cd nextjs-app" -ForegroundColor Gray
 Write-Host "   vercel deploy" -ForegroundColor Gray
